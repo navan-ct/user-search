@@ -1,3 +1,11 @@
 .queryText {
-  color: blue;
+  color: royalblue;
+  font-weight: 500;
+}
+
+.nestedValue {
+  border-bottom: 0.1rem solid #ccc;
+  border-top: 0.1rem solid #ccc;
+  margin: 0.1rem 0;
+  padding: 0.3rem 0 0.4rem 0;
 }

@@ -1,0 +1,67 @@
+.container {
+  box-shadow: 0 0.2rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.searchInput {
+  border: none;
+  border-bottom: 0.1rem solid #ccc;
+  outline: none;
+  padding: 0.8rem 1.2rem;
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 33rem;
+  overflow: auto;
+}
+
+.resultContainer {
+  align-items: stretch;
+  background-color: white;
+  border: none;
+  border-bottom: 0.1rem solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.6rem 2rem;
+  text-align: left;
+}
+
+.resultContainer.isFocused {
+  background-color: cornsilk;
+}
+
+.resultContainer.isKeyboardMode {
+  cursor: none;
+}
+
+.userId {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.userName {
+  font-style: italic;
+  margin-bottom: 0.2rem;
+}
+
+.userItems {
+  font-size: 1.4rem;
+}
+
+.userAddress {
+  color: #444;
+  font-size: 1.4rem;
+  margin-top: 0.2rem;
+}
+
+.noResultsText {
+  align-items: center;
+  color: #444;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}

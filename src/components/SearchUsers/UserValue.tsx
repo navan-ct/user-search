@@ -37,11 +37,11 @@ export default function UserValue({ value, query, className }: UserValueProps) {
       value.some((item) => item.toLowerCase().includes(query.toLowerCase()))
     ) {
       return (
-        <span className={className}>
-          <span className={styles.queryText}>{query}</span> found in items
+        <span className={`${className} ${styles.nestedValue}`}>
+          <span className={styles.queryText}>• {query}</span> found in items
         </span>
       );
     } else return null;
   }
-  return <span>{value}</span>;
+  return <span className={className}>{value}</span>;
 }

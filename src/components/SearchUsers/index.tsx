@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { type User } from "../../api/users";
-import styles from "./Search.module.css";
+import styles from "./SearchUsers.module.css";
 import UserValue from "./UserValue";
 
 export interface SearchUsersProps {
@@ -85,23 +85,40 @@ export default function SearchUsers({ users }: SearchUsersProps) {
       />
 
       <div className={styles.resultsContainer}>
-        {results.map((result, index) => (
-          <button
-            key={result.id}
-            id={`result-${index}`}
-            className={`${styles.resultContainer} ${index === focusedIndex ? styles.isFocused : ""} ${isKeyboardMode ? styles.isKeyboardMode : ""}`}
-            onMouseEnter={() => setFocusedIndex(index)}
-            onMouseLeave={() => setFocusedIndex(null)}
-          >
-            <UserValue value={result.id} query={query} />
-            <UserValue value={result.name} query={query} />
-            <UserValue value={result.items} query={query} />
-            <UserValue
-              value={`${result.address} ${result.pincode}`}
-              query={query}
-            />
-          </button>
-        ))}
+        {results.length ? (
+          results.map((result, index) => (
+            <button
+              key={result.id}
+              id={`result-${index}`}
+              className={`${styles.resultContainer} ${index === focusedIndex ? styles.isFocused : ""} ${isKeyboardMode ? styles.isKeyboardMode : ""}`}
+              onMouseEnter={() => setFocusedIndex(index)}
+              onMouseLeave={() => setFocusedIndex(null)}
+            >
+              <UserValue
+                className={styles.userId}
+                value={result.id}
+                query={query}
+              />
+              <UserValue
+                className={styles.userName}
+                value={result.name}
+                query={query}
+              />
+              <UserValue
+                className={styles.userItems}
+                value={result.items}
+                query={query}
+              />
+              <UserValue
+                className={styles.userAddress}
+                value={`${result.address} ${result.pincode}`}
+                query={query}
+              />
+            </button>
+          ))
+        ) : (
+          <div className={styles.noResultsText}>No User Found</div>
+        )}
       </div>
     </div>
   );
