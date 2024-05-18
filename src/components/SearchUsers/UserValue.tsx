@@ -9,29 +9,25 @@ export interface UserValueProps {
 export default function UserValue({ value, query, className }: UserValueProps) {
   const lowerValue = value.toLowerCase();
   const lowerQuery = query.toLowerCase();
+  const startIndex = lowerValue.indexOf(lowerQuery);
 
-  if (lowerValue.includes(lowerQuery)) {
-    const startIndex = lowerValue.indexOf(lowerQuery);
+  if (startIndex !== -1) {
     const startText = startIndex ? (
-      <span className={className}>{value.slice(0, startIndex)}</span>
+      <span>{value.slice(0, startIndex)}</span>
     ) : null;
     const queryText = (
       <span className={`${className} ${styles.queryText}`}>
         {value.slice(startIndex, startIndex + query.length)}
       </span>
     );
-    const stopText = (
-      <span className={className}>
-        {value.slice(startIndex + query.length)}
-      </span>
-    );
+    const stopText = <span>{value.slice(startIndex + query.length)}</span>;
 
     return (
-      <>
+      <span className={className}>
         {startText}
         {queryText}
         {stopText}
-      </>
+      </span>
     );
   }
   return <span>{value}</span>;

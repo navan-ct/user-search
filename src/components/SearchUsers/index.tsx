@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
 import { type User } from "../../api/users";
+import styles from "./Search.module.css";
 import UserValue from "./UserValue";
 
 export interface SearchUsersProps {
@@ -27,11 +28,17 @@ export default function SearchUsers({ users }: SearchUsersProps) {
   );
 
   return (
-    <div>
-      <input value={query} onChange={(event) => setQuery(event.target.value)} />
-      <div>
+    <div className={styles.container}>
+      <input
+        placeholder="Search users by ID, name, or address"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        className={styles.searchInput}
+      />
+
+      <div className={styles.resultsContainer}>
         {results.map((result) => (
-          <button key={result.id}>
+          <button key={result.id} className={styles.resultContainer}>
             <UserValue value={result.id} query={query} />
             <UserValue value={result.name} query={query} />
             <UserValue
