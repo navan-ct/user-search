@@ -13,6 +13,7 @@ export default function SearchUsers({ users }: SearchUsersProps) {
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [isKeyboardMode, setIsKeyboardMode] = useState(false);
 
+  // Search for the text in every property's value and get the results.
   const results = useMemo(
     () =>
       query.length

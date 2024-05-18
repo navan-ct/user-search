@@ -13,6 +13,7 @@ export default function UserValue({ value, query, className }: UserValueProps) {
     const startIndex = lowerValue.indexOf(lowerQuery);
 
     if (startIndex !== -1) {
+      // Split the text and apply special style rules to the query.
       const startText = startIndex ? (
         <span>{value.slice(0, startIndex)}</span>
       ) : null;
